@@ -1,0 +1,29 @@
+//Computations
+
+//Artists - number of unique artists
+COUNT_DISTINCT(artist_name)
+
+// track length categ - categorical transformation of track length
+CASE
+  WHEN duration_ms < 180000 THEN 'Short'
+  WHEN duration_ms BETWEEN 180000 AND 300000 THEN 'Medium'
+  ELSE 'Long'
+END
+
+// energy intensity categ
+CASE
+  WHEN energy < 0.33 THEN 'Low'
+  WHEN energy BETWEEN 0.33 AND 0.66 THEN 'Medium'
+  ELSE 'High'
+END
+
+//MOOD classification
+CASE
+  WHEN energy > 0.5 AND valence > 0.5 THEN 'Happy'
+  WHEN energy > 0.5 AND valence <= 0.5 THEN 'Energetic'
+  WHEN energy <= 0.5 AND valence > 0.5 THEN 'Calm'
+  ELSE 'Sad'
+END
+
+//duration_min
+duration_ms / 60000
